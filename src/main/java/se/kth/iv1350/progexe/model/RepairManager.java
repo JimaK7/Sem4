@@ -63,10 +63,11 @@ public void addDiagnosticResult(OrderDTO order, String diagnosticResult){
 }
 
 /**
- * Lägger till en reparationsåtgärd på en order
+ * Lägger till en reparationsåtgärd på en order och sparar den uppdaterade ordern i registret.
  * @param order Ordern som ska åtgärdas
  * @param description Åtgärdsbeskrivningen
  * @param cost Kostnad för åtgärden
+ * @return Den uppdaterade ordern
  */
 public OrderDTO addRepairTask(OrderDTO order, String description, double cost){
 
@@ -84,7 +85,10 @@ public OrderDTO addRepairTask(OrderDTO order, String description, double cost){
             order.getDiagnosticResult(),
             updatedTasks,
             order.isAccepted());
-            return updatedOrder;
+
+        repairOrderRegistry.saveOrder(updatedOrder);
+
+        return updatedOrder;
 }
 /**
  * Markerar en reparationsorder som accepterad
