@@ -7,15 +7,13 @@ import se.kth.iv1350.progexe.integration.BikeDTO;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.OrderDTO;
 import se.kth.iv1350.progexe.integration.RepairOrderRegistry;
-import se.kth.iv1350.progexe.model.RepairManager;
 
 /**
- * Verifierar att en reparationsorder skapas med korrekt
- * problembeskrivning och kopplas till rätt kund. 
+ * Verifierar att RepairOrderRegistry kan skapa reparationsordrar
+ * och lägga till diagnosresultat.
  */
 public class RepairOrderRegistryTest {
     private RepairOrderRegistry registry;
-    private RepairManager repairManager;
     private CustomerDTO customer;
     /**
      * Skapar testdata innan varje test.
@@ -26,7 +24,6 @@ public class RepairOrderRegistryTest {
 
         BikeDTO bike = new BikeDTO("Trek", "Mountain Bike", "ABC123");
         customer = new CustomerDTO("Jima Khadrou", "jima@gmail.com", "0761234567", bike);
-        repairManager = new RepairManager(null, registry, null);
     }
 
     /**
