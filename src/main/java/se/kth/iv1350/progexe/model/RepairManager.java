@@ -90,13 +90,14 @@ public OrderDTO addRepairTask(OrderDTO order, String description, double cost){
 
         return updatedOrder;
 }
+
 /**
  * Markerar en reparationsorder som accepterad
  * @param order Ordern som ska accepteras
  */
 public void acceptRepairOrder(OrderDTO order){
-    repairOrderRegistry.acceptRepairOrder(order);
-
+    order.setAccepted(true);
+    
 }
 /**
  * Beräknar den totala kostnaden för en reparationsorder.

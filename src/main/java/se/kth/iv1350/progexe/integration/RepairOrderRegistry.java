@@ -57,12 +57,6 @@ public void saveOrder(OrderDTO updatedOrder) {
 
     orders.add(updatedOrder);
 }
-/**
- * Markerar en reparationsorder som accepterad
- * @param order Ordern som ska accepteras
- */
-public void acceptRepairOrder(OrderDTO order){
-    order.setAccepted(true);
-}
+
 
 }
