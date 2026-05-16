@@ -1,6 +1,7 @@
 package se.kth.iv1350.progexe.view;
 
 import se.kth.iv1350.progexe.controller.Controller;
+import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 import se.kth.iv1350.progexe.integration.BikeDTO;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.OrderDTO;
@@ -63,7 +64,7 @@ public class View {
         System.out.println(formatCustomer(customer));  
         }
         catch(CustomerNotFoundException e){
-            System.out.println("Ingen kund hittades med det angivna telefonnumret.");
+            System.out.println("Ingen kund hittades med det angivna telefonnumret: " + e.getPhoneNumber());
         }     
         System.out.println("\nKunden beskriver problemet och en order skapas:\n");
         OrderDTO order = controller.createRepairOrder("Däcken har punkterats", "0761234567");
