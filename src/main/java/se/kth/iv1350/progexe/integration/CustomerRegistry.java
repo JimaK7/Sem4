@@ -2,6 +2,7 @@ package se.kth.iv1350.progexe.integration;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 
 public class CustomerRegistry {
 
@@ -22,11 +23,13 @@ public class CustomerRegistry {
     }
 
    /**
-    * Söker efter en kund via angivet telefonnummer
-    * @param phoneNumber Numret till kunden som söks
-    * @return Kunden om telefonnumret matchar, annars null.
-    */
-    public CustomerDTO findCustomer(String phoneNumber){
+   * Söker efter en kund via angivet telefonnummer.
+   * 
+   * @param phoneNumber Numret till kunden som söks.
+   * @return Kunden om telefonnumret matchar.
+   * @throws CustomerNotFoundException Om ingen kund med det angivna telefonnumret finns.
+   */
+    public CustomerDTO findCustomer(String phoneNumber) throws CustomerNotFoundException{ 
 
         for (CustomerDTO customer : customers) {
 
@@ -35,6 +38,6 @@ public class CustomerRegistry {
             }
         }
 
-        return null;
+        throw new CustomerNotFoundException(phoneNumber);
     }
 }

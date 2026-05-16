@@ -3,6 +3,7 @@ package se.kth.iv1350.progexe.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.CustomerRegistry;
 import se.kth.iv1350.progexe.integration.OrderDTO;
@@ -35,8 +36,9 @@ public class RepairManager {
      * Söker efter en kund via telefonnummer
      * @param phoneNumber Telefonnumret till kunden som sökes
      * @return kunden om telefonnumret matchar
+     * @throws CustomerNotFoundException Om kunden inte finns
      */
-    public CustomerDTO findCustomer(String phoneNumber){
+    public CustomerDTO findCustomer(String phoneNumber) throws CustomerNotFoundException{
         return customerRegistry.findCustomer(phoneNumber);
     }
     /**
@@ -45,8 +47,9 @@ public class RepairManager {
     * @param problemDescription Kundens beskrivning av problemet.
     * @param phoneNumber Telefonnummer till kunden som lämnar in cykeln.
     * @return Den skapade reparationsordern.
+     * @throws CustomerNotFoundException om kunden inte hittas
     */
-    public OrderDTO createRepairOrder(String problemDescription, String phoneNumber){
+    public OrderDTO createRepairOrder(String problemDescription, String phoneNumber) throws CustomerNotFoundException{
 
         CustomerDTO customer = customerRegistry.findCustomer(phoneNumber);
         return repairOrderRegistry.createRepairOrder(problemDescription, customer);

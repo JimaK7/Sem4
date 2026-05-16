@@ -60,15 +60,22 @@ public class View {
     public void sampleExecution(){
         System.out.println("\nHittar kunden:\n");
         try{
-        CustomerDTO customer = controller.findCustomer("0761234567");
+        CustomerDTO customer = controller.findCustomer("076123456");
         System.out.println(formatCustomer(customer));  
         }
         catch(CustomerNotFoundException e){
             System.out.println("Ingen kund hittades med det angivna telefonnumret: " + e.getPhoneNumber());
         }     
+        OrderDTO order;
         System.out.println("\nKunden beskriver problemet och en order skapas:\n");
-        OrderDTO order = controller.createRepairOrder("Däcken har punkterats", "0761234567");
+        try{
+        order = controller.createRepairOrder("Däcken har punkterats", "076123456");
         System.out.println(formatOrder(order));
+        }
+        catch(CustomerNotFoundException e){
+        System.out.println("Ordern kunde inte skapas eftersom ingen kund hittades med telefonnumret: " + e.getPhoneNumber());
+        return; }
+        
         System.out.println("\nLägger till Diagnosresultatet:\n");
         controller.addDiagnosticResult(order, "Punktering på båda däcken");
         System.out.println(formatOrder(order));
