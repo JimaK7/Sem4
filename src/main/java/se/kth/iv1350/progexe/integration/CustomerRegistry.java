@@ -3,10 +3,12 @@ package se.kth.iv1350.progexe.integration;
 import java.util.ArrayList;
 import java.util.List;
 import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
+import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 
 public class CustomerRegistry {
 
     private List<CustomerDTO> customers;
+    private static final String DATABASE_FAILURE_NUMBER= "1111111111";
 
     /**
      * Skapar ett kundregister med hårdkodad data bestående av kundens kontaktuppgifter och cykel.
@@ -31,13 +33,16 @@ public class CustomerRegistry {
    */
     public CustomerDTO findCustomer(String phoneNumber) throws CustomerNotFoundException{ 
 
-        for (CustomerDTO customer : customers) {
+        if (phoneNumber.equals(DATABASE_FAILURE_NUMBER)) {
+            throw new DatabaseFailureException("CustomerRegistry kunde inte nås");
+        }
 
+        for (CustomerDTO customer : customers) {
             if (customer.getPhoneNumber().equals(phoneNumber)) {
                 return customer;
             }
+            
         }
-
         throw new CustomerNotFoundException(phoneNumber);
     }
 }

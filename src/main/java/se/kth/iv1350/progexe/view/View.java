@@ -1,17 +1,23 @@
 package se.kth.iv1350.progexe.view;
 
+import se.kth.iv1350.progexe.errorhandling.Logger;
+import se.kth.iv1350.progexe.errorhandling.FileLogger;
+
 import se.kth.iv1350.progexe.controller.Controller;
 import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
+import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.BikeDTO;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.OrderDTO;
 import se.kth.iv1350.progexe.integration.RepairTaskDTO;
+
 /**
  * Detta är en platshållare för den riktiga vyn. Den innehåller en hårdkodad körning
  * med anrop till alla operationer i controllern
  */
 public class View {
     private Controller controller;
+    private Logger logger = new FileLogger();
     /**
      * Skapar en ny instans av View
      * @param controller Den controller som hanterar kommunikationen mellan vyn och modellagret
@@ -60,21 +66,32 @@ public class View {
     public void sampleExecution(){
         System.out.println("\nHittar kunden:\n");
         try{
-        CustomerDTO customer = controller.findCustomer("076123456");
+        CustomerDTO customer = controller.findCustomer("1111111111");
         System.out.println(formatCustomer(customer));  
         }
         catch(CustomerNotFoundException e){
             System.out.println("Ingen kund hittades med det angivna telefonnumret: " + e.getPhoneNumber());
+        }
+        catch(DatabaseFailureException e){
+            System.out.println("Kundregistret kunde inte nås, försök igen senare.");
+            logger.log("DatabaseFailureException: " + e.getMessage());
+            return; 
         }     
         OrderDTO order;
         System.out.println("\nKunden beskriver problemet och en order skapas:\n");
         try{
-        order = controller.createRepairOrder("Däcken har punkterats", "076123456");
+        order = controller.createRepairOrder("Däcken har punkterats", "1111111111");
         System.out.println(formatOrder(order));
         }
         catch(CustomerNotFoundException e){
         System.out.println("Ordern kunde inte skapas eftersom ingen kund hittades med telefonnumret: " + e.getPhoneNumber());
-        return; }
+        return; 
+        }
+        catch(DatabaseFailureException e){
+            System.out.println("Ordern kunde ej skapas eftersom kundregistret inte kunde nås, försök igen senare.");
+            logger.log("DatabaseFailureException: " + e.getMessage()); 
+            return;
+        } 
         
         System.out.println("\nLägger till Diagnosresultatet:\n");
         controller.addDiagnosticResult(order, "Punktering på båda däcken");

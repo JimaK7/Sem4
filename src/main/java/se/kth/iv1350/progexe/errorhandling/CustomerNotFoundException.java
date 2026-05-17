@@ -12,7 +12,7 @@ public class CustomerNotFoundException extends BikeException {
      * @param phoneNumber Telefonnumret som användes vid sökningen.
      */
     public CustomerNotFoundException(String phoneNumber) {
-        super("Ingen kund med telefonnummer " + phoneNumber + " hittades.");
+        super("Kunden hittades inte");
         this.phoneNumber = phoneNumber;
     }
 
