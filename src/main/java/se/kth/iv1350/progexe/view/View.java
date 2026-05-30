@@ -73,7 +73,7 @@ public class View {
         }
         catch(DatabaseFailureException e){
             System.out.println("Kundregistret kunde inte nås, försök igen senare.");
-            logger.log("DatabaseFailureException: " + e.getMessage());
+            logger.log(e);
             return; 
         }     
         OrderDTO order;
@@ -88,7 +88,7 @@ public class View {
         }
         catch(DatabaseFailureException e){
             System.out.println("Ordern kunde ej skapas eftersom kundregistret inte kunde nås, försök igen senare.");
-            logger.log("DatabaseFailureException: " + e.getMessage()); 
+            logger.log(e);
             return;
         } 
         

@@ -8,7 +8,7 @@ public class DatabaseFailureException extends RuntimeException {
     /**
      * Skapar ett nytt undantag för ett databasfel.
      *
-     * @param message Meddelandet som beskriver felet.
+     * @param message Det tekniska felmeddelandet som ska användas i loggen.
      */
     public DatabaseFailureException(String message) {
         super(message);
