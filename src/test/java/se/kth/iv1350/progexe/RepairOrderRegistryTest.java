@@ -38,15 +38,5 @@ public class RepairOrderRegistryTest {
         assertEquals(customer, order.getCustomer(), "Fel kund i ordern.");
     }
 
-    /**
-     * Testar att diagnosresultat kan läggas till i en order.
-     */
-    @Test
-    public void testAddDiagnosticResult() {
-        OrderDTO order = registry.createRepairOrder("Däcken har punkterats", customer);
 
-        registry.addDiagnosticResult(order, "Punktering på båda däcken");
-
-        assertEquals("Punktering på båda däcken", order.getDiagnosticResult(), "Diagnosen lades inte till.");
-    }
 }

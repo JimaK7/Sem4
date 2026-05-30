@@ -60,9 +60,22 @@ public class RepairManager {
  *
  * @param order Den order som ska uppdateras.
  * @param diagnosticResult Resultatet av diagnosen.
+ * @return Den uppdaterade ordern.
  */
-public void addDiagnosticResult(OrderDTO order, String diagnosticResult){
-    repairOrderRegistry.addDiagnosticResult(order, diagnosticResult);
+public OrderDTO addDiagnosticResult(OrderDTO order, String diagnosticResult){
+         
+    OrderDTO updatedOrder = new OrderDTO(
+            order.getId(),
+            order.getDateCreated(),
+            order.getProblemDescr(),
+            order.getCustomer(),
+            diagnosticResult,
+            new ArrayList<>(order.getRepairTasks()),
+            order.isAccepted());
+
+        repairOrderRegistry.saveOrder(updatedOrder);
+
+        return updatedOrder;
 }
 
 /**
@@ -97,9 +110,21 @@ public OrderDTO addRepairTask(OrderDTO order, String description, double cost){
 /**
  * Markerar en reparationsorder som accepterad
  * @param order Ordern som ska accepteras
+ * @return Den uppdaterade ordern.
  */
-public void acceptRepairOrder(OrderDTO order){
-    order.setAccepted(true);
+public OrderDTO acceptRepairOrder(OrderDTO order){
+    OrderDTO updatedOrder = new OrderDTO(
+            order.getId(),
+            order.getDateCreated(),
+            order.getProblemDescr(),
+            order.getCustomer(),
+            order.getDiagnosticResult(),
+            new ArrayList<>(order.getRepairTasks()),
+            true);
+
+        repairOrderRegistry.saveOrder(updatedOrder);
+
+        return updatedOrder;
     
 }
 /**

@@ -94,14 +94,14 @@ public class View {
         } 
         
         System.out.println("\nLägger till Diagnosresultatet:\n");
-        controller.addDiagnosticResult(order, "Punktering på båda däcken");
+        order = controller.addDiagnosticResult(order, "Punktering på båda däcken");
         System.out.println(formatOrder(order));
         System.out.println("\nSkapar reparationsåtgärder och sätter pris:\n");
         order = controller.addRepairTask(order, "Täta hålen och pumpa däcken", 500.0);
         order = controller.addRepairTask(order, "Byta slang framme", 250.0);
         System.out.println(formatOrder(order));
         System.out.println("\n*Kunden accepterar ordern*\n");
-        controller.acceptRepairOrder(order);
+        order = controller.acceptRepairOrder(order);
         System.out.println(formatOrder(order));
         double totalCost = controller.calculateTotalCost(order);
         controller.printReceipt(formatOrder(order), totalCost);
