@@ -1,6 +1,7 @@
 package se.kth.iv1350.progexe.controller;
 
 import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
+import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.OrderDTO;
 import se.kth.iv1350.progexe.model.RepairManager;
@@ -25,6 +26,7 @@ public class Controller {
      * @param phoneNumber Telefonnumret till kunden som söks
      * @return kunden om telefonnumret matchar
      * @throws CustomerNotFoundException Om kunden inte finns.
+     * @throws DatabaseFailureException Om kundregistret inte kan nås.
      */
     public CustomerDTO findCustomer(String phoneNumber)throws CustomerNotFoundException{
         return repairManager.findCustomer(phoneNumber);
@@ -37,7 +39,8 @@ public class Controller {
     * @param problemDescription Kundens beskrivning av problemet.
     * @param phoneNumber Telefonnummer till kunden.
     * @return Den skapade reparationsordern.
-     * @throws CustomerNotFoundException Om kunden inte finns
+    * @throws CustomerNotFoundException Om kunden inte finns
+    * @throws DatabaseFailureException Om kundregistret inte kan nås.
     */
     public OrderDTO createRepairOrder(String problemDescription, String phoneNumber) throws CustomerNotFoundException{
         return repairManager.createRepairOrder(problemDescription, phoneNumber);

@@ -5,6 +5,7 @@ import java.util.List;
 import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 
+
 public class CustomerRegistry {
 
     private List<CustomerDTO> customers;
@@ -30,6 +31,7 @@ public class CustomerRegistry {
    * @param phoneNumber Numret till kunden som söks.
    * @return Kunden om telefonnumret matchar.
    * @throws CustomerNotFoundException Om ingen kund med det angivna telefonnumret finns.
+   * @throws DatabaseFailureException Om kundregistret inte kan nås.
    */
     public CustomerDTO findCustomer(String phoneNumber) throws CustomerNotFoundException{ 
 
