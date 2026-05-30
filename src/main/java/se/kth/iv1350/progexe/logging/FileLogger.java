@@ -1,4 +1,4 @@
-package se.kth.iv1350.progexe.errorhandling;
+package se.kth.iv1350.progexe.logging;
 
 import java.io.FileWriter;
 import java.io.IOException;

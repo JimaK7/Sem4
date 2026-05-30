@@ -1,9 +1,9 @@
 package se.kth.iv1350.progexe.controller;
 
-import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
-import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
+import se.kth.iv1350.progexe.integration.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.OrderDTO;
+import se.kth.iv1350.progexe.model.CustomerNotFoundException;
 import se.kth.iv1350.progexe.model.RepairManager;
 
 /**

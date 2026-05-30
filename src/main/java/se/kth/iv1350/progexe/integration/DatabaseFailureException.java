@@ -1,4 +1,4 @@
-package se.kth.iv1350.progexe.errorhandling;
+package se.kth.iv1350.progexe.integration;
 
 /**
  * Kastats när databasen eller ett register av någon anledning inte kan anropas.

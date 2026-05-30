@@ -2,10 +2,9 @@ package se.kth.iv1350.progexe.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
-import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.CustomerRegistry;
+import se.kth.iv1350.progexe.integration.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.OrderDTO;
 import se.kth.iv1350.progexe.integration.Printer;
 import se.kth.iv1350.progexe.integration.RepairOrderRegistry;

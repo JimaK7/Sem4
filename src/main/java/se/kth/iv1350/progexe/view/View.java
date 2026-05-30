@@ -1,15 +1,14 @@
 package se.kth.iv1350.progexe.view;
 
-import se.kth.iv1350.progexe.errorhandling.Logger;
-import se.kth.iv1350.progexe.errorhandling.FileLogger;
-
 import se.kth.iv1350.progexe.controller.Controller;
-import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
-import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.BikeDTO;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
+import se.kth.iv1350.progexe.integration.DatabaseFailureException;
 import se.kth.iv1350.progexe.integration.OrderDTO;
 import se.kth.iv1350.progexe.integration.RepairTaskDTO;
+import se.kth.iv1350.progexe.logging.FileLogger;
+import se.kth.iv1350.progexe.logging.Logger;
+import se.kth.iv1350.progexe.model.CustomerNotFoundException;
 
 /**
  * Detta är en platshållare för den riktiga vyn. Den innehåller en hårdkodad körning

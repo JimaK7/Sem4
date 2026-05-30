@@ -1,4 +1,4 @@
-package se.kth.iv1350.progexe.errorhandling;
+package se.kth.iv1350.progexe.model;
 
 /**
  * Kastats när ingen kund med det angivna telefonnumret finns.

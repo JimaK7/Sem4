@@ -3,10 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
-import se.kth.iv1350.progexe.errorhandling.CustomerNotFoundException;
 import se.kth.iv1350.progexe.integration.CustomerDTO;
 import se.kth.iv1350.progexe.integration.CustomerRegistry;
+import se.kth.iv1350.progexe.integration.DatabaseFailureException;
+import se.kth.iv1350.progexe.model.CustomerNotFoundException;
 
 /**
  * Verifierar att CustomerRegistry hanterar kundsökningar korrekt

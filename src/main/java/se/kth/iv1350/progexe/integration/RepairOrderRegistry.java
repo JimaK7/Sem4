@@ -3,8 +3,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.progexe.errorhandling.DatabaseFailureException;
-
 
 /**
  * Hanterar lagring av reparationsordrar
