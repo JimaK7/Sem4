@@ -63,9 +63,11 @@ public class View {
      * Utför en fake reparationsorder av en elcykel genom att kalla på alla systemoperationer i controller.
      */
     public void sampleExecution(){
+        
         System.out.println("\nHittar kunden:\n");
+
         try{
-        CustomerDTO customer = controller.findCustomer("0761234567");//1111111111
+        CustomerDTO customer = controller.findCustomer("0761234567");
         System.out.println(formatCustomer(customer));  
         }
         catch(CustomerNotFoundException e){

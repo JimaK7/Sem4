@@ -6,6 +6,8 @@ import se.kth.iv1350.progexe.integration.Printer;
 import se.kth.iv1350.progexe.integration.RepairOrderRegistry;
 import se.kth.iv1350.progexe.model.RepairManager;
 import se.kth.iv1350.progexe.view.View;
+import se.kth.iv1350.progexe.view.RepairOrderView;
+import se.kth.iv1350.progexe.logging.RepairOrderLogger;
 /**
  * Startar programmet, och innehåller main metoden som används för att starta programmet.
  */
@@ -18,6 +20,9 @@ public class Main {
     public static void main(String[] args) {
         CustomerRegistry customerRegistry = new CustomerRegistry();
         RepairOrderRegistry repairOrderRegistry = new RepairOrderRegistry();
+        repairOrderRegistry.addRepairOrderObserver(new RepairOrderView());
+        repairOrderRegistry.addRepairOrderObserver(new RepairOrderLogger());
+        
         Printer printer = new Printer();
 
         RepairManager repairManager = new RepairManager(customerRegistry, repairOrderRegistry, printer);

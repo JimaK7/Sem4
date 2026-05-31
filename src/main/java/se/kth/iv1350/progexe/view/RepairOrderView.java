@@ -20,6 +20,7 @@ public class RepairOrderView implements RepairOrderObserver {
     public void repairOrderUpdated(OrderDTO updatedOrder) {
         System.out.println("\n--- Uppdaterad reparationsorder ---");
         System.out.println(formatOrder(updatedOrder));
+        System.out.println("");
     }
 
     private String formatOrder(OrderDTO order){
