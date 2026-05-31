@@ -65,7 +65,7 @@ public class View {
     public void sampleExecution(){
         System.out.println("\nHittar kunden:\n");
         try{
-        CustomerDTO customer = controller.findCustomer("1111111111");
+        CustomerDTO customer = controller.findCustomer("0761234567");//1111111111
         System.out.println(formatCustomer(customer));  
         }
         catch(CustomerNotFoundException e){
@@ -79,7 +79,7 @@ public class View {
         OrderDTO order;
         System.out.println("\nKunden beskriver problemet och en order skapas:\n");
         try{
-        order = controller.createRepairOrder("Däcken har punkterats", "1111111111");
+        order = controller.createRepairOrder("Däcken har punkterats", "0761234567");
         System.out.println(formatOrder(order));
         }
         catch(CustomerNotFoundException e){

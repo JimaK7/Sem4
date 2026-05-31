@@ -3,13 +3,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Hanterar lagring av reparationsordrar
  */
 public class RepairOrderRegistry {
 private List<OrderDTO> orders;
 private int nextOrderId = 1;
+private List<RepairOrderObserver> observers = new ArrayList<>();
+
 
 /**
  * Skapar ett nytt register för reparationsordrar
@@ -17,6 +18,17 @@ private int nextOrderId = 1;
 public RepairOrderRegistry(){
     this.orders = new ArrayList<OrderDTO>();
 }
+
+/**
+* Lägger till en observer som ska informeras när en reparationsorder uppdateras.
+*
+* @param observer Observern som ska läggas till.
+*/
+public void addRepairOrderObserver(RepairOrderObserver observer) {
+    observers.add(observer);
+}
+
+
 
 /**
  * Skapar en ny reparationsorder och sparar den i registret
@@ -42,11 +54,19 @@ public void saveOrder(OrderDTO updatedOrder) {
     for (int i = 0; i < orders.size(); i++) {
         if (orders.get(i).getId().equals(updatedOrder.getId())) {
             orders.set(i, updatedOrder);
+            notifyObservers(updatedOrder);
             return;
         }
     }
 
     orders.add(updatedOrder);
+    notifyObservers(updatedOrder);
+}
+
+private void notifyObservers(OrderDTO updatedOrder) {
+    for(RepairOrderObserver observer : observers){
+        observer.repairOrderUpdated(updatedOrder);
+    }
 }
 
 }
