@@ -38,6 +38,7 @@ public class RepairOrderLogger implements RepairOrderObserver {
         if (logStream != null) {
             logStream.println("\n--- Uppdaterad reparationsorder ---");
             logStream.println(formatOrder(updatedOrder));
+            logStream.println("");
         }
     }
 
