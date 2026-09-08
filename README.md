@@ -7,5 +7,6 @@ A Java application developed as part of a KTH course. The system simulates a rep
 The project focuses on object-oriented design, separation of responsibilities and unit testing.
 
 Svenska:
+
 Detta program simulerar ett reparationsflöde för en elcykelverkstad. 
 Systemet hanterar kunder, reparationsordrar, diagnoser, reparationsåtgärder och kvittoutskrift.
